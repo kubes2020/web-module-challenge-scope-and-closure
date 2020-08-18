@@ -28,9 +28,15 @@ function processFirstItem(stringList, callback) {
  * 
  * 1. What is the difference between counter1 and counter2?
  * 
+ * counter1 utilizes closure by keeping the count value stored for future use. counter2 has no closure therefore count is set to 0 each time it's run.
+ * 
  * 2. Which of the two uses a closure? How can you tell?
  * 
+ * counter1 because count variable is hidden in the function (protected).
+ * 
  * 3. In what scenario would the counter1 code be preferable? In what scenario would counter2 be better? 
+ * 
+ * counter1 for keeping track of the score of a game. counter2 for use as a calculator.
  *
 */
 
@@ -56,11 +62,11 @@ function counter2() {
 
 Write a function called `inning` that returns a random number of points that a team scored in an inning. This should be a whole number between 0 and 2. */
 
-function inning(/*Code Here*/){
-
-    /*Code Here*/
-
+function inning(){
+  return Math.round(Math.random() * 2 );
 }
+
+// console.log(inning());
 
 /* Task 3: finalScore()
 
@@ -76,11 +82,20 @@ finalScore(inning, 9) might return:
 
 */ 
 
-function finalScore(/*code Here*/){
-
-  /*Code Here*/
+function finalScore(inning, num){
+  let Away = 0;
+  let Home = 0;
+  let i = 0;
+  while (i < num){
+    Away += (inning());
+    Home += (inning());
+    i++;
+  }
+  return `awayTeam ${Away}, homeTeam ${Home}`;
 
 }
+
+
 
 /* Task 4: 
 
@@ -103,8 +118,39 @@ and returns the score at each pont in the game, like so:
 Final Score: awayTeam - homeTeam */
 
 
-function scoreboard(/* CODE HERE */) {
-  /* CODE HERE */
+function getInningScore(inning, num){
+  let Home = 0;
+  let Away = 0;
+  let i = 0;
+  while (i < num){
+    let x = inning();
+    let y = inning();
+    Away += x;
+    Home += y;
+    let inningNum = i+1;
+    suffix = ' ';
+    if (inningNum === 1){
+      suffix = 'st';
+    }else if (inningNum === 2){
+      suffix = 'nd';
+    }else if (inningNum === 3){
+      suffix = 'rd';
+    }else{
+      suffix = 'th';
+    }
+
+    console.log(`${inningNum}${suffix} inning: awayTeam ${x} - homeTeam ${y}`);
+    i++;
+  }
+  console.log(`Final Score: awayTeam ${Away} - homeTeam ${Home}`);
 }
 
+
+
+function scoreboard(getInningScore, inning, num) {
+  return getInningScore(inning, num);
+}
+
+
+scoreboard(getInningScore, inning, 9);
 

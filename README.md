@@ -42,7 +42,12 @@ Find the file `index.js` and complete the tasks.
 Edit the `ReadMe` file with your answers.
 
 1. In your own words, define closure (1-2 sentences).
+
+Closure is a nested function with the ability to access a saved variable. 
+
 2. Study the following code, then answer the questions below.
+
+
 
 ```js
 function personalDice(name){
@@ -63,8 +68,16 @@ dansRoll();
 ```
 
 a. Where is closure used in this code? How can you tell?
+
+The name is being accessed from the middle of the nested function all the way out. I can tell because it prints "Dan" each time.
+
 b. Compare and contrast calling `dansRoll` the first and second time. What is always the same? What could change?
+
+His name.
+
 c. What is the lexical scope of `newRoll`? 
+
+Only within the function.
 
 ### Task 2c - Exit Ticket
 
